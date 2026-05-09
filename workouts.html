@@ -21,6 +21,36 @@
         </ul>
      </nav>
 
+     <!-- Page Header-->
+      <section class="page-header">
+        <h1>🏃‍♂️ Workout Logger</h1>
+        <p>Every rep counts! Log it and own it!</p>
+      </section>
+
+      <!-- Workout Form-->
+       <section class="form-section">
+        <div class="form-box">
+            <h2>Log a Workout</h2>
+            <input type="text" id="workout-name" placeholder="Exercise (e.g. Running)"/>
+            <input type="number" id="workout-duration" placeholder="Duration (minutes)"/>
+            <input type="number" id="calories" placeholder="Calories Burned"/>
+
+            <!-- Workout Category Dropdown -->
+             <select id="workout-category">
+                <option value="">Select Category</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Strength">Strength</option>
+                <option value="Flexibility">Flexibility / Yoga</option>
+                <option value="Sports">Sports</option>
+                <option value="Other">Other</option>
+             </select>
+
+            <button onclick="addWorkout()">➕ Add Workout</button>
+        </div>
+       </section>
+
+       
+
 
 
 
