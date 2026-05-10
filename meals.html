@@ -27,6 +27,31 @@
         <p>Fuel smart. Eat with purpose!</p>
       </section> 
 
-      
-</body>
+      <!-- Meal Form-->
+       <section class="form-selection">
+        <div class="form-box">
+            <h2>Log a Meal</h2>
+            <input type="text" id="meal-name" placeholder="Meal (e.g. Chicken & Rice)"/>
+            <input type="text" id="meal-portion" placeholder="Portion (e.g. 1 plate)"/>
+            <input type="number" id="meal-calories" placeholder="Calories"/>
+
+            <!-- Meal Type Dropdown -->
+             <select id="meal-type">
+                <option value="">Select Meal Type</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snack">Snack</option>
+             </select>
+
+             <button onclick="addMeal()">➕ Add Meal</button>
+        </div>
+       </section>
+
+
+
+
+
+
+  </body>
 </html>
