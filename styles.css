@@ -48,3 +48,18 @@ nav {
 .nav-links a.active {
     color: #ff4500;
 }
+
+/*--- Hero Section ---*/
+.hero {
+    min-height: 90vh;
+    background: linear-gradient(135deg, #1a0a00, #0d0d0d);
+    background-image: url('pexels-shtefutsa-17852466.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+}
