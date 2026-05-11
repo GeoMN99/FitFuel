@@ -102,3 +102,76 @@ nav {
     flex-wrap: wrap;
 }
 
+/*--- Buttons ---*/
+.btn-primary {
+    background: linear-gradient(135deg, #ff4500, #ff8c00);
+    color: #fff;
+    padding: 14px, 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s ease;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.btn-seondary {
+    background: transparent;
+    color: #ff8c00;
+    padding: 14px, 30px;
+    border: 2px solid #ff8c00;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.btn-seondary:hover {
+    background: #ff8c00;
+    color: #000;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #aaa;
+    padding: 14px, 30px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: #ff4500;
+    color: #ff4500;
+}
+
+.btn-danger {
+    background: transparent;
+    color: #ff4500;
+    padding: 12px, 28px;
+    border-radius: 8px;
+    border: 2px solid #ff4500;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: #ff4500;
+    color: #fff;
+}
+
