@@ -63,3 +63,42 @@ nav {
     padding: 60px 20px;
     position: relative;
 }
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+    color: #fff;
+    letter-spacing: 4px;
+}
+
+.hero-content h1 span {
+    color: #ff4500;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin: 15px 0 30px;
+    letter-spacing: 1px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
