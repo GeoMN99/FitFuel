@@ -295,7 +295,7 @@ footer {
 .page-header {
     padding: 60px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #1a0a00 #111);
+    background: linear-gradient(135deg, #1a0a00, #111);
     background-image: url(nick-gosset-3DJfakd6VoU-unsplash.jpg);
     background-size: cover;
     background-position: center;
@@ -564,3 +564,13 @@ ul li .delete-btn {
     margin-top: 20px;
 }
 
+
+/*---List Images ---*/
+.list-section h2 img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
