@@ -330,3 +330,68 @@ footer {
     letter-spacing: 1px;
 }
 
+/*--- Form Section ---*/
+.form-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.form-box {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border-top: 4px solid #ff4500;
+}
+
+.form-box h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: #ff4500;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.form-box input,
+.form-box select {
+    display: block;
+    width: 100%;
+    padding: 11px 14px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #111;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    transition: border 0.2s ease;
+}
+
+.form-box input:focus,
+.form-box select:focus {
+    border-color: #ff4500;
+}
+
+.form-box select option {
+    background: #111;
+}
+
+.form-box button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #ff4500, #ff8c00);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: opacity 0.2s ease;
+}
+
+.form-box button:hover {
+    opacity: 0.85;
+}
+
