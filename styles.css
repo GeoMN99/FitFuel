@@ -290,3 +290,16 @@ footer {
     color: #ccc;
     margin-bottom: 25px;
 }
+
+/*--- Page Header ---*/
+.page-header {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #1a0a00 #111);
+    background-image: url(nick-gosset-3DJfakd6VoU-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-bottom: 3px solid #ff4500;
+}
+
