@@ -36,3 +36,10 @@ function addMEal() {
     document.getElementById('meal-calories').value = '';
     document.getElementById('meal-type').value = '';
 }
+
+function deleteMeals(index) {
+    meals.splice(index, 1);
+    saveMeals();
+    renderMeals();
+}
+
