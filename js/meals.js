@@ -13,5 +13,26 @@ function addMEal() {
     const calories = parseInt(document.getElementById('meal-calories').value.trim());
     const type = document.getElementById('meal-type').value;
 
-    
+    if (!name || !portion || isNaN(calories) || calories <= 0) {
+        alert('Please fill in all fields correctly');
+        return;
+    }
+
+    const meal = {
+        name,
+        portion,
+        calories,
+        type: type || 'General',
+        date: new Date().toLocaleDateString()
+    };
+
+    meals.push(meal);
+    saveMeals();
+    renderMeals();
+
+    //Clear inputs
+    document.getElementById('meal-name').value = '';
+    document.getElementById('meal-portions').value = '';
+    document.getElementById('meal-calories').value = '';
+    document.getElementById('meal-type').value = '';
 }
