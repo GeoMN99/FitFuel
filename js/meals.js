@@ -1,5 +1,5 @@
 // Load meals from local storage or start empty
-let meals =JSON.parse(localStorage.getItem('meals'))
+let meals =JSON.parse(localStorage.getItem('meals')) || [];
 
 //Function to save meals to local storage
 function saveMeals() {
@@ -7,7 +7,7 @@ function saveMeals() {
 }
 
 //Function to add meal
-function addMEal() {
+function addMeal() {
     const name = document.getElementById('meal-name').value.trim();
     const portion = document.getElementById('meal-portion').value.trim();
     const calories = parseInt(document.getElementById('meal-calories').value.trim());
@@ -32,12 +32,12 @@ function addMEal() {
 
     //Clear inputs
     document.getElementById('meal-name').value = '';
-    document.getElementById('meal-portions').value = '';
+    document.getElementById('meal-portion').value = '';
     document.getElementById('meal-calories').value = '';
     document.getElementById('meal-type').value = '';
 }
 
-function deleteMeals(index) {
+function deleteMeal(index) {
     meals.splice(index, 1);
     saveMeals();
     renderMeals();
