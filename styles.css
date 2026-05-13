@@ -192,9 +192,12 @@ nav {
 
 .feature-cards {
     display: flex;
+    flex-direction: row;
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0 20px;
+    text-align: left;
 }
 
 .feature-card {
@@ -202,6 +205,9 @@ nav {
     border-radius: 12px;
     padding: 30px 25px;
     width: 280px;
+    min-height: 250px;
+    flex: 1;
+    max-width: 320px;
     border-top: 4px solid #ff4500;
     text-align: center;
     transition: transform 0.2s ease;
