@@ -43,3 +43,37 @@ function deleteMeals(index) {
     renderMeals();
 }
 
+function renderMeals() {
+  const list = document.getElementById('meal-list');
+  const totalEl = document.getElementById('meal-total');
+  list.innerHTML = '';
+
+  if (meals.length === 0) {
+    list.innerHTML = '<li style="color:#555;">No meals logged yet. Add one above!</li>';
+    totalEl.textContent = 'Total Consumed: 0 kcal';
+    return;
+  }
+
+  let total = 0;
+  meals.forEach((m, i) => {
+    total += m.calories;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div>
+        <strong>${m.name}</strong> — ${m.portion}
+        <span class="badge">${m.type}</span>
+        <br/><small style="color:#666;">${m.date}</small>
+      </div>
+      <div>
+        <span class="kcal">${m.calories} kcal</span>
+        <button class="delete-btn" onclick="deleteMeal(${i})">🗑️</button>
+      </div>
+    `;
+    list.appendChild(li);
+  });
+
+  totalEl.textContent = `Total Consumed: ${total} kcal`;
+}
+
+//Run on page load
+renderMeals();
