@@ -58,7 +58,7 @@ function renderWorkouts() {
     let total = 0;
     workouts.forEach((w, i) => {
         total +=w.calories;
-        const li = document.getElementById('li');
+        const li = document.createElement('li');
         li.innerHTML = `
         <div>
         <strong>${w.name}</strong> - ${w.duration} mins
@@ -70,6 +70,7 @@ function renderWorkouts() {
         <button class="delete-btn" onclick="deleteWorkout(${i})">🗑</button>
         </div>
         `;
+        list.appendChild(li);
     });
     totalEl.textContent = `Total Burned: ${total} kcal`;
 }
