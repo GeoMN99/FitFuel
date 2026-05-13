@@ -37,3 +37,42 @@ function addWorkout() {
     document.getElementById('workout-calories').value = '';
     document.getElementById('workout-category').value = '';
 }
+
+function deleteWorkout(index) {
+    workouts.splice(index, 1);
+    saveWorkouts();
+    renderWorkouts();
+}
+
+function renderWorkouts() {
+    const list = document.getElementById('workout-list');
+    const totalEl = document.getElementById('workout-total');
+    list.innerHTML = '';
+
+    if (workouts.length === 0) {
+        list.innerHTML = '<li style="color:#555;">No workouts logged yet. Add one above!</li>';
+        totalEl.textContent = 'Total Burned: 0 kcal';
+        return;
+    }
+
+    let total = 0;
+    workouts.forEach((w, i) => {
+        total +=w.calories;
+        const li = document.getElementById('li');
+        li.innerHTML = `
+        <div>
+        <strong>${w.name}</strong> - ${w.duration} mins
+        <span class="badge">${w.category}</span>
+        <br/><small style="color:#666;">${w.date}</small>
+        </div>
+        <div>
+        <span class="kcal">${w.calories} kcal</span>
+        <button class="delete-btn" onclick="deleteWorkout(${i})">🗑</button>
+        </div>
+        `;
+    });
+    totalEl.textContent = `Total Burned: ${total} kcal`;
+}
+
+// Run on page load
+renderWorkouts();
