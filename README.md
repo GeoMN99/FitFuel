@@ -17,7 +17,7 @@ FitFuel is a pesronal fitness and nutrition tracking website that helps users st
 4. No installation or internet connection needed
 
 ### Live Site
-(geomn99.github.io/FitFuel/)
+View on GitHub pages(https://geomn99.github.io/FitFuel/)
 
 ### Known Bugs
 - Workout not saving — Input field ID did not match the JS file — Fixed
