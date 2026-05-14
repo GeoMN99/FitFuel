@@ -5,7 +5,7 @@ const meals = JSON.parse(localStorage.getItem('meals')) || [];
 // Render functions for history page
 function renderHistory() {
     // Workouts History
-    const wList = document.getElementById('history-workouts-list');
+    const wList = document.getElementById('history-workout-list');
     wList.innerHTML = '';
 
     if (workouts.length === 0) {

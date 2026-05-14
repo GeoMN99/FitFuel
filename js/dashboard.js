@@ -18,7 +18,7 @@ function updateDashboard() {
 
     const progress = Math.min((totalConsumed / DAILY_GOAL) * 100, 100);
     document.getElementById('progress-bar').style.width = `${progress}%`;
-    document.getElementById('progress-text').textContent = `${Math.round(progress)}% of ${DAILY_GOAL} kcal`;
+    document.getElementById('progress-label').textContent = `${Math.round(progress)}% of ${DAILY_GOAL} kcal`;
 }
 
 updateDashboard();
