@@ -49,3 +49,15 @@ function renderHistory() {
         });
     }
 }
+
+// Clear all data from local storage
+function clearAll() {
+    if (confirm('Are you sure you want to clear All your Data? This action cannot be undone.')) {
+        localStorage.removeItem('workouts');
+        localStorage.removeItem('meals');
+        renderHistory();
+        alert('All data cleared!');
+    }
+}
+
+renderHistory();
