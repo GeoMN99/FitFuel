@@ -16,11 +16,11 @@ function renderHistory() {
             li.innerHTML = `
             <div>
             <strong>${w.name}</strong> - ${w.duration} mins
-            <span class style="color:#666;">${w.date}</small>
+            <span style="color:#666;">${w.date}</span>
             </div>
             <div>
             <span class="kcal">${w.calories} kcal</span>
-            </span>
+            </div>
             `;
             wList.appendChild(li);
         });
