@@ -630,3 +630,95 @@ ul li .delete-btn {
         flex-wrap: wrap;
     }
 }
+
+/*--- Additional Mobile Adjustments ---*/
+@media (max-width: 768px) {
+    /*Hero Section*/
+    .hero {
+        min-height: 60vh;
+        padding: 40px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 0.9rem;;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    /*Feature carsd*/
+    .feature-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    /*Dashboard Cards*/
+    .summary-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    /*Progress Bar*/
+    .progress-container {
+        width: 90%;
+    }
+
+    /*Quick Links*/ 
+    .quick-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /*Form Box*/
+    .form-box {
+        width: 95%;
+        padding: 20px 15px;
+    }
+
+    /*List section*/
+    .list-section {
+        padding: 20px 15px;
+    }
+
+    /*Motivation Banner*/
+    .motivation-banner {
+        padding: 40px 15px;
+    }
+
+    .motivation-banner h2 {
+        font-size: 1.3rem;
+    }
+
+    /*Page Header*/
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    /*Footer*/
+    footer {
+        font-size: 0.75rem;
+        padding: 15px;
+    }
+
+    /*List Items*/
+    ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
