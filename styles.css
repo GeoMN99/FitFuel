@@ -732,3 +732,23 @@ ul li .delete-btn {
 .logo a:hover {
     color: #ff8c00;
 }
+
+/*Logo adjustments for mobile*/
+@media (max-width: 768px) {
+    .logo {
+        z-index: 101;
+        position: relative;
+    }
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ff4500;
+    display: block;
+    padding: 10px 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.logo a:hover {
+    color: #ff8c00;
+}
