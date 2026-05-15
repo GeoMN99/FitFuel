@@ -580,3 +580,53 @@ ul li .delete-btn {
     vertical-align: middle;
     margin-right: 10px;
 }
+
+/*Hambuger Button - hidden on desktop*/
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #ff4500;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/*Mobile Styles*/
+@media (max-width: 768px) {
+
+    /*Show hambuger button on mobile*/
+    .hamburger {
+        display: block;
+    }
+
+    /*Hide nav links by default on mobile*/
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #111;
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 99;
+    }
+
+    /*Show nav links when open class is added*/
+    .nav-links.open {
+        display: flex;
+    }
+
+    /*Stack nav links vertically*/
+    .nav-links li {
+        text-align: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #222;
+    }
+
+    /*Make nav position relative so dropdown sits correctly*/
+    nav {
+        position: relative;
+        flex-wrap: wrap;
+    }
+}

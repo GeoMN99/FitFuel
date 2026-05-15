@@ -13,6 +13,9 @@
     <header>
       <nav>
         <div class="logo">🔥 FitFuel</div>
+
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="workouts.html">Workouts</a></li>
@@ -32,7 +35,7 @@
                 <div class="hero-buttons">
                     <a href="workouts.html" class="btn-primary">Log Workouts</a>
                     <a href="meals.html" class="btn-secondary">Log Meals</a>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -80,6 +83,12 @@
     <p>FitFuel &copy; 2026 - Stay Consistent. Stay Fuelled.</p>
    </footer>
 
+   <script>
+    function toggleMenu() {
+        const nav = document.getElementById('nav-links');
+        nav.classList.toggle('open');
+    }
+   </script>
   
 </body>
 </html>

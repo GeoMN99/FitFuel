@@ -13,6 +13,9 @@
     <header>
      <nav>
         <div class="logo">🔥 FitFuel</div>
+
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="workouts.html" class="active">Workouts</a></li>
@@ -71,5 +74,11 @@
 
         <script src="js/workouts.js"></script>
 
+        <script>
+            function toggleMenu() {
+                const nav = document.getElementById('nav-links');
+                nav.classList.toggle('open');
+            }
+        </script>
 </body>
 </html>
