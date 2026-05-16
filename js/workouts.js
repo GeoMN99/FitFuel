@@ -1,24 +1,26 @@
-// Load workouts from local storage or start empty
+// Load workouts from local storage or start with empty array
 let workouts = JSON.parse(localStorage.getItem('workouts')) || [];
-
-//Function to save workouts to local storage
+ 
+// Function to save workouts to local storage
 function saveWorkouts() {
     localStorage.setItem('workouts', JSON.stringify(workouts));
 }
-
+ 
 // Function to add a new workout
 function addWorkout() {
+    // Grab values from input fields
     const name = document.getElementById('workout-name').value.trim();
     const duration = document.getElementById('workout-duration').value.trim();
     const calories = parseInt(document.getElementById('workout-calories').value.trim());
     const category = document.getElementById('workout-category').value;
-
+ 
+    // Validate — make sure nothing is empty
     if (!name || !duration || isNaN(calories) || calories <= 0) {
         alert('Please fill in all fields correctly.');
         return;
-    } 
-
-    // Save with today's date
+    }
+ 
+    // Create a workout object and save today's date automatically
     const workout = {
         name,
         duration,
@@ -26,54 +28,74 @@ function addWorkout() {
         category: category || 'General',
         date: new Date().toLocaleDateString()
     };
-
+ 
+    // Push to array, save to local storage, re-render the list
     workouts.push(workout);
     saveWorkouts();
     renderWorkouts();
-
-    // Clear form
+ 
+    // Clear the input fields after adding
     document.getElementById('workout-name').value = '';
     document.getElementById('workout-duration').value = '';
     document.getElementById('workout-calories').value = '';
     document.getElementById('workout-category').value = '';
 }
-
+ 
+// Function to delete a workout by its index
 function deleteWorkout(index) {
     workouts.splice(index, 1);
     saveWorkouts();
     renderWorkouts();
 }
-
+ 
+// Function to render the workout list on the page
 function renderWorkouts() {
     const list = document.getElementById('workout-list');
     const totalEl = document.getElementById('workout-total');
     list.innerHTML = '';
-
+ 
     if (workouts.length === 0) {
         list.innerHTML = '<li style="color:#555;">No workouts logged yet. Add one above!</li>';
         totalEl.textContent = 'Total Burned: 0 kcal';
         return;
     }
-
+ 
     let total = 0;
     workouts.forEach((w, i) => {
-        total +=w.calories;
+        total += w.calories;
         const li = document.createElement('li');
         li.innerHTML = `
         <div>
-        <strong>${w.name}</strong> - ${w.duration} mins
-        <span class="badge">${w.category}</span>
-        <br/><small style="color:#666;">${w.date}</small>
+            <strong>${w.name}</strong> - ${w.duration} mins
+            <span class="badge">${w.category}</span>
+            <br/><small style="color:#666;">${w.date}</small>
         </div>
         <div>
-        <span class="kcal">${w.calories} kcal</span>
-        <button class="delete-btn" onclick="deleteWorkout(${i})">🗑</button>
+            <span class="kcal">${w.calories} kcal</span>
+            <button class="delete-btn" data-index="${i}">🗑</button>
         </div>
         `;
         list.appendChild(li);
     });
+ 
     totalEl.textContent = `Total Burned: ${total} kcal`;
+ 
+    // Event listeners for all delete buttons
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            deleteWorkout(index);
+        });
+    });
 }
-
-// Run on page load
-renderWorkouts();
+ 
+// ===== EVENT LISTENERS =====
+// Wait for the page to fully load before attaching event listeners
+document.addEventListener('DOMContentLoaded', function() {
+ 
+    // Add Workout button event listener
+    document.getElementById('add-workout-btn').addEventListener('click', addWorkout);
+ 
+    // Run on page load to display any saved workouts
+    renderWorkouts();
+});
