@@ -5,6 +5,27 @@ let meals = JSON.parse(localStorage.getItem('meals')) || [];
 function saveMeals() {
     localStorage.setItem('meals', JSON.stringify(meals));
 }
+
+// Function to show a success message
+function showSuccess(message) {
+    //Create the message element
+    const msg = document.createElement('div');
+    msg.classList.add('success-message');
+    msg.textContent = message;
+
+    // Add it to the page
+    document.body.appendChild(msg);
+
+    // After 2 seconds start fading out
+    setTimeout(function() {
+        msg.classList.add('fade-out');
+    }, 2000);
+
+    //After 2.5 seconds remove it from  the page completely
+    setTimeout(function() {
+        msg.remove();
+    }, 2500);
+    }
  
 // Function to add a new meal
 function addMeal() {
@@ -33,7 +54,8 @@ function addMeal() {
     meals.push(meal);
     saveMeals();
     renderMeals();
- 
+    showSuccess('✅ Meal added successfully!');
+    
     // Clear the input fields after adding
     document.getElementById('meal-name').value = '';
     document.getElementById('meal-portion').value = '';

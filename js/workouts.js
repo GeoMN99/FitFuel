@@ -5,6 +5,29 @@ let workouts = JSON.parse(localStorage.getItem('workouts')) || [];
 function saveWorkouts() {
     localStorage.setItem('workouts', JSON.stringify(workouts));
 }
+
+// Function to show a success message
+function showSuccess(message) {
+    //Create the message element
+    const msg = document.createElement('div');
+    msg.classList.add('success-message');
+    msg.textContent = message;
+
+    // Add it to the page
+    document.body.appendChild(msg);
+
+    // After 2 seconds start fading out
+    setTimeout(function() {
+        msg.classList.add('fade-out');
+    }, 2000);
+
+    //After 2.5 seconds remove it from  the page completely
+    setTimeout(function() {
+        msg.remove();
+    }, 2500);
+    }
+
+
  
 // Function to add a new workout
 function addWorkout() {
@@ -33,6 +56,7 @@ function addWorkout() {
     workouts.push(workout);
     saveWorkouts();
     renderWorkouts();
+    showSuccess('✅ Workout added successfully!');
  
     // Clear the input fields after adding
     document.getElementById('workout-name').value = '';
