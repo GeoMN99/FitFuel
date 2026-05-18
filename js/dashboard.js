@@ -29,7 +29,7 @@ function updateDashboard() {
     document.getElementById('total-consumed').textContent = `${totalConsumed} kcal`;
 
     //Update net balance and change colour based on positive
-    const netEl = document.getElementById('net-balance');
+    const balanceEl = document.getElementById('net-balance');
     balanceEl.textContent = `${netBalance} kcal`;
     balanceEl.style.color = netBalance >= 0 ? '#39ff14' : '#ff4500';
 
