@@ -75,6 +75,13 @@ function renderMeals() {
     const list = document.getElementById('meal-list');
     const totalEl = document.getElementById('meal-total');
     list.innerHTML = '';
+
+    //Get today's date in the same format as saved dates
+    const today = new Date().toLocaleDateString();
+
+    //Split meals into today and previous
+    const todayMeals = meals.filter(m => m.date === today);
+    const previousMeals = meals.filter(m => m.date !== today);
  
     if (meals.length === 0) {
         list.innerHTML = '<li style="color:#555;">No meals logged yet. Add one above!</li>';
@@ -82,26 +89,62 @@ function renderMeals() {
         return;
     }
  
-    let total = 0;
-    meals.forEach((m, i) => {
-        total += m.calories;
-        const li = document.createElement('li');
-        li.innerHTML = `
-        <div>
-            <strong>${m.name}</strong> - ${m.portion}
-            <span class="badge">${m.type}</span>
-            <br/><small style="color:#666;">${m.date}</small>
-        </div>
-        <div>
-            <span class="kcal">${m.calories} kcal</span>
-            <button class="delete-btn" data-index="${i}">🗑</button>
-        </div>
-        `;
-        list.appendChild(li);
-    });
- 
-    totalEl.textContent = `Total Consumed: ${total} kcal`;
- 
+    //Today's meals
+    if (todayMeals.length > 0) {
+        const todayHeader = document.createElement('li');
+        todayHeader.innerHTML = '<strong style="color:#ff4500;">📅 Today</strong>';
+        todayHeader.style.background = 'transparent';
+        todayHeader.style.borderBottom = '1px solid #ff4500';
+        list.appendChild(todayHeader);
+
+        todayMeals.forEach((m, i) => {
+            const index = meals.indexOf(m);
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <div>
+                <strong>${m.name}</strong> - ${m.portion}
+                <span class="badge">${m.type}</span>
+                <br/><small style="color:#666;">${m.date}</small>
+            </div>
+            <div>
+                <span class="kcal">${m.calories} kcal</span>
+                <button class="delete-btn" data-index="${index}">🗑</button>
+            </div>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    //Previous meals
+    if (previousMeals.length > 0) {
+        const prevHeader = document.createElement('li');
+        prevHeader.innerHTML = '<strong style="color: #aaa;">🕑 Previous Meals</strong>';
+        prevHeader.style.background = 'transparent';
+        prevHeader.style.borderBottom = '1px solid #333';
+        list.appendChild(prevHeader);
+
+        previousMeals.forEach((m, i) => {
+            const index = meals.indexOf(m);
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <div>
+                <strong>${m.name}</strong> - ${m.portion}
+                <span class="badge">${m.type}</span>
+                <br/><small style="color:#666;">${m.date}</small>
+            </div>
+            <div>
+                <span class="kcal">${m.calories} kcal</span>
+                <button class="delete-btn" data-index="${index}">🗑</button>
+            </div>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    //Calculate total for today only
+    const total = todayMeals.reduce((sum, m) => sum + m.calories, 0);
+    totalEl.textContent = `Total Consumed Today: ${total} kcal`;
+
     // Event listeners for all delete buttons
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', function() {

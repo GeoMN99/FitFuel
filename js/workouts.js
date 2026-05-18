@@ -77,34 +77,77 @@ function renderWorkouts() {
     const list = document.getElementById('workout-list');
     const totalEl = document.getElementById('workout-total');
     list.innerHTML = '';
+
+    //Get today's date in the same format as saved dates
+    const today = new Date().toLocaleDateString();
+
+    //Split workouts into today and previous
+    const todayWorkouts = workouts.filter(w => w.date === today);
+    const previousWorkouts = workouts.filter(w => w.date !== today);
  
     if (workouts.length === 0) {
         list.innerHTML = '<li style="color:#555;">No workouts logged yet. Add one above!</li>';
         totalEl.textContent = 'Total Burned: 0 kcal';
         return;
     }
- 
-    let total = 0;
-    workouts.forEach((w, i) => {
-        total += w.calories;
-        const li = document.createElement('li');
-        li.innerHTML = `
-        <div>
-            <strong>${w.name}</strong> - ${w.duration} mins
-            <span class="badge">${w.category}</span>
-            <br/><small style="color:#666;">${w.date}</small>
-        </div>
-        <div>
-            <span class="kcal">${w.calories} kcal</span>
-            <button class="delete-btn" data-index="${i}">🗑</button>
-        </div>
-        `;
-        list.appendChild(li);
-    });
- 
-    totalEl.textContent = `Total Burned: ${total} kcal`;
- 
-    // Event listeners for all delete buttons
+
+    //Today's workouts
+    if (todayWorkouts.length > 0) {
+        const todayHeader = document.createElement('li');
+        todayHeader.innerHTML = '<strong style="color:#ff4500;">📅 Today</strong>';
+        todayHeader.style.background = 'transparent';
+        todayHeader.style.borderBottom = '1px solid #ff4500';
+        list.appendChild(todayHeader);
+
+        todayWorkouts.forEach((w, i) => {
+            const index = workouts.indexOf(w);
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <div>
+                <strong>${w.name}</strong> - ${w.duration} mins
+                <span class="badge">${w.category}</span>
+                <br/><small style="color:#666;">${w.date}</small>
+            </div>
+            <div>
+                <span class="kcal">${w.calories} kcal</span>
+                <button class="delete-btn" data-index="${index}">🗑</button>
+            </div>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    //Previous workouts
+    if (previousWorkouts.length > 0) {
+        const prevHeader = document.createElement('li');
+        prevHeader.innerHTML = '<strong style="color: #aaa;">🕑 Previous Workouts</strong>';
+        prevHeader.style.background = 'transparent';
+        prevHeader.style.borderBottom = '1px solid #333';
+        list.appendChild(prevHeader);
+
+        previousWorkouts.forEach((w, i) => {
+            const index = workouts.indexOf(w);
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <div>
+                <strong>${w.name}</strong> - ${w.duration} mins
+                <span class="badge">${w.category}</span>
+                <br/><small style="color:#666;">${w.date}</small>
+            </div>
+            <div>
+                <span class="kcal">${w.calories} kcal</span>
+                <button class="delete-btn" data-index="${index}">🗑</button>
+            </div>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    //Calculate total for today only
+    const total = todayWorkouts.reduce((sum, w) => sum + w.calories, 0);
+    totalEl.textContent = `Total Burned Today: ${total} kcal`;
+
+    //Event listeners for all delete buttons
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -112,6 +155,7 @@ function renderWorkouts() {
         });
     });
 }
+ 
  
 // ===== EVENT LISTENERS =====
 // Wait for the page to fully load before attaching event listeners
